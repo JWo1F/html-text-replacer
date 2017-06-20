@@ -39,8 +39,10 @@ export function parseHTML(html:string): Payload {
     }
   }
 
-  chunks.push({ type, content: buffer });
-  if(type == 'text') res.texts.push(chunks.length - 1);
+  if(buffer) {
+    chunks.push({ type, content: buffer });
+    if(type == 'text') res.texts.push(chunks.length - 1);
+  }
 
   return res;
 }
